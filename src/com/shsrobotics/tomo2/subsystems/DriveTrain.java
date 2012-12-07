@@ -9,10 +9,10 @@ import com.shsrobotics.tomo2.commands.DriveWithJoystick;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class DriveTrain extends Subsystem implements Maps{
+public class DriveTrain extends Subsystem implements Maps {
 
       private RobotDrive drive = new RobotDrive(Robot.frontLeftWheel, Robot.rearLeftWheel, Robot.frontRightWheel, Robot.rearRightWheel);
-      
+
       public void drive(double x, double y, double z) {
 
 	    drive.mecanumDrive_Cartesian(x, y, z, Constants.gyroAngle);

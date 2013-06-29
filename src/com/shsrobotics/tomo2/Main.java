@@ -16,34 +16,30 @@ import edu.wpi.first.wpilibj.Timer;
 public class Main extends IterativeRobot implements Maps, Hardware {
 
       public void robotInit() { // flash lights
+		  final double frequency = 2; // Hz
+		  
 		  lights.set(ON);
-		  Timer.delay(0.5);
+		  Timer.delay(1 / frequency);
 		  lights.set(OFF);
-		  Timer.delay(0.5);
+		  Timer.delay(1 / frequency);
 		  lights.set(ON);
-		  Timer.delay(0.5);
+		  Timer.delay(1 / frequency);
 		  lights.set(OFF);
+		  
+		  Cannon.compressor.start(); // start storing air
       }
 
-      public void teleopInit() {
-		  Cannon.compressor.start();
-	  }
-
       public void teleopPeriodic() {
-			Cannon.airRelease.set(Buttons.shootCannon.held()? OPEN : CLOSED);
+			Cannon.airRelease.set(Buttons.shootCannon.held()? OPEN : CLOSED); // if button held open air release valve, firing cannon
 			
-			lights.set(Buttons.lightsOn.held() ? ON : OFF);
-			lights.set(Buttons.toggleLights.pressed() ? !lights.getState() : lights.getState());
+			lights.set(Buttons.lightsOn.held() ? ON : OFF); // lights on while button held
+			lights.set(Buttons.toggleLights.pressed() ? !lights.getState() : lights.getState()); // on button press toggle lights
 			
-			double scalingFactor = Buttons.fineControl.held() ? 0.5 : 1.0;
+			double scalingFactor = Buttons.fineControl.held() ? 0.5 : 1.0; // scale to 1/2 speed while button held
 			double X = MathUtils.pow(joystick.getX(), 2) * scalingFactor;
 			double Y = MathUtils.pow(joystick.getY(), 2) * scalingFactor;
 			double Z = MathUtils.pow(joystick.getZ(), 2) * scalingFactor;
 			
 			drive.mecanumDrive_Cartesian(X, Y, Z, Constants.noGyroscopeAngle);
-	  }
-	  
-	  public void disabledInit() {
-		  Cannon.compressor.stop();
 	  }
 }

@@ -12,6 +12,7 @@ package com.shsrobotics.tomo2;
 import com.sun.squawk.util.MathUtils;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Main extends IterativeRobot implements Maps, Hardware {
 
@@ -27,6 +28,8 @@ public class Main extends IterativeRobot implements Maps, Hardware {
 		  lights.set(OFF);
 		  
 		  Cannon.compressor.start(); // start storing air
+		  
+		  SmartDashboard.putString("Status", "Ready to go!");
       }
 
       public void teleopPeriodic() {
@@ -41,5 +44,16 @@ public class Main extends IterativeRobot implements Maps, Hardware {
 			double Z = MathUtils.pow(joystick.getZ(), 2) * scalingFactor;
 			
 			drive.mecanumDrive_Cartesian(X, Y, Z, Constants.noGyroscopeAngle);
+			
+			updateDashboardAndScreen();
 	  }
+
+	private void updateDashboardAndScreen() {
+		boolean charged = Cannon.compressor.getPressureSwitchValue();
+		String airPressureUpdate = charged ? "FULLY CHARGED" : "NOT ENOUGH AIR PRESSURE";
+		
+		screen.println(Screen.line1, Screen.column1, airPressureUpdate);
+		SmartDashboard.putBoolean("Fully Charged", charged);
+		SmartDashboard.putString("Air  Pressure", airPressureUpdate);
+	}
 }

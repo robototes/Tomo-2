@@ -22,16 +22,17 @@ public class Main extends IterativeRobot implements Maps, Hardware {
 		  Cannon.compressor.start(); // start storing air
 		  
 		  SmartDashboard.putString("Status", "Ready to go!");
-		  
       }
 
       public void teleopPeriodic() {
-			Cannon.airRelease.set(Buttons.shootCannon.held()? OPEN : CLOSED); // if button held open air release valve, firing cannon
+			Cannon.airRelease.set(Buttons.shootCannon.held() ? OPEN : CLOSED); // if button held, open air release valve, firing cannon
+			Cannon.compressor.setRelayValue(Buttons.pulseCompressor.held() ? ON : OFF); // if button held, force compressor to intake air
 			
 			lights.set(Buttons.lightsOn.held() ? ON : OFF); // lights on while button held
-			lights.set(Buttons.toggleLights.pressed() ? !lights.getState() : lights.getState()); // on button press toggle lights
+			lights.set(Buttons.toggleLights.pressed() ? !lights.getState() : lights.getState()); // on button press, toggle lights
+			Buttons.flashLights.whenPressed(new FlashLights());
 			
-			double scalingFactor = Buttons.fineControl.held() ? 0.5 : 1.0; // scale to 1/2 speed while button held
+			double scalingFactor = Buttons.fineControl.held() ? Constants.driveCoordinateScale : Constants.normalScale; // scale to 1/2 speed while button held
 			//							cubed inputs	and		scale
 			double X = MathUtils.pow(joystick.getX(), 3) * scalingFactor;
 			double Y = MathUtils.pow(joystick.getY(), 3) * scalingFactor;

@@ -41,7 +41,7 @@ public interface Maps {
 	    public static final double flashCount = 4.0; // how many times to flash lights
 
 	    public static final double driveCoordinateScale = 0.5; // factor to scale drive values
-	    public static final double noDriveScaling = 1.0; // don't scale values when there is no scaling
+	    public static final double normalScale = 1.0; // don't scale values when there is no scaling
 
 	    public static final double noGyroscopeAngle = 0.0; // currently no gyroscope on robot
 	}
@@ -56,5 +56,6 @@ public interface Maps {
 	    public static final Button toggleLights = new JoystickButton(joystick, Extreme3DController.baseRearRight);
 	    public static final Button flashLights = new JoystickButton(joystick, Extreme3DController.topTopRight);
 	    public static final Button fineControl = new JoystickButton(joystick, Extreme3DController.side);
+		public static final Button pulseCompressor = new JoystickButton(joystick, Extreme3DController.topBottomRight);
 	}
 }

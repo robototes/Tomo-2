@@ -2,7 +2,7 @@ package com.shsrobotics.tomo2;
 
 import edu.wpi.first.wpilibj.*;
 import com.shsrobotics.library.Button;
-import com.shsrobotics.library.GBL;
+import com.shsrobotics.library.GLOBAL;
 import com.shsrobotics.library.JoystickButton;
 import com.shsrobotics.library.joysticks.Extreme3DController;
 
@@ -18,7 +18,7 @@ public interface Maps {
 		OPEN = Relay.Value.kForward,
 		CLOSED = Relay.Value.kOff;
 
-	public static final Joystick joystick = new Joystick(GBL.USB_1);
+	public static final Joystick joystick = new Joystick(GLOBAL.USB_1);
 
 	/** Ports on the robot. */
 	public class Robot {
@@ -43,7 +43,8 @@ public interface Maps {
 	    public static final double driveCoordinateScale = 0.5; // factor to scale drive values
 	    public static final double normalScale = 1.0; // don't scale values when there is no scaling
 
-	    public static final double noGyroscopeAngle = 0.0; // currently no gyroscope on robot
+		public static final double powerToTurnInFourSeconds = 0.1; // the power setting to motors that it takes to fully rotate the robot in exactly four seconds.
+		
 	}
 
 
@@ -57,5 +58,6 @@ public interface Maps {
 	    public static final Button flashLights = new JoystickButton(joystick, Extreme3DController.topTopRight);
 	    public static final Button fineControl = new JoystickButton(joystick, Extreme3DController.side);
 		public static final Button pulseCompressor = new JoystickButton(joystick, Extreme3DController.topBottomRight);
+		public static final Button driveInSquare = new JoystickButton(joystick, Extreme3DController.baseCenterLeft);
 	}
 }

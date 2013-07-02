@@ -37,9 +37,7 @@ public interface Maps extends GLOBAL {
 	    public static final double normalScale = 1.0; // don't scale values when there is no scaling
 
 		public static final double powerToTurnInFourSeconds = 0.1; // the power setting to motors that it takes to fully rotate the robot in exactly four seconds.
-		
 	}
-
 
 	/** 
 	 * Buttons.

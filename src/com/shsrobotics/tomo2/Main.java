@@ -10,7 +10,6 @@ package com.shsrobotics.tomo2;
 
 
 import com.shsrobotics.library.FRCRobot;
-import com.shsrobotics.library.Screen;
 import com.sun.squawk.util.MathUtils;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -51,7 +50,7 @@ public class Main extends FRCRobot implements Hardware {
 		boolean charged = Cannon.compressor.getPressureSwitchValue();
 		String airPressureUpdate = charged ? "FULLY CHARGED" : "NOT ENOUGH AIR PRESSURE";
 
-		screen.println(Screen.line1, Screen.column1, airPressureUpdate);
+		screen.println(Screen.line1, Screen.tab1, airPressureUpdate);
 		SmartDashboard.putBoolean("Fully Charged", charged);
 		SmartDashboard.putString("Status", airPressureUpdate);
 	}

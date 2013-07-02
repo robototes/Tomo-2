@@ -31,12 +31,12 @@ public interface Maps extends GLOBAL {
 	/** Constants used in code. */
 	public class Constants {
 	    public static final int flashRate = 4; // how often to flash (on -> off -> on) lights per second
-	    public static final double flashCount = 4.0; // how many times to flash lights
+	    public static final int flashCount = 4; // how many times to flash lights
 
 	    public static final double driveCoordinateScale = 0.5; // factor to scale drive values
-	    public static final double normalScale = 1.0; // don't scale values when there is no scaling
+	    public static final double normalScale = 1.0; // normal scaling
 
-		public static final double powerToTurnInFourSeconds = 0.1; // the power setting to motors that it takes to fully rotate the robot in exactly four seconds.
+		public static final double powerToTurnInFourSeconds = 0.1; // the power setting so that it takes to fully rotate the robot in exactly four seconds.
 	}
 
 	/** 

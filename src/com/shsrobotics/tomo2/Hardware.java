@@ -27,5 +27,4 @@ public interface Hardware extends Maps {
 	
 	public static BooleanRelay lights = new BooleanRelay(Robot.lights);
 	public static RobotDrive drive = new RobotDrive(Wheels.frontLeft, Wheels.rearLeft, Wheels.rearRight, Wheels.frontRight);
-	public static DriverStationLCD screen = DriverStationLCD.getInstance();
 }

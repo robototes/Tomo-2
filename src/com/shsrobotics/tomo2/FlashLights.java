@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.Timer;
  * Flashes lights.
  * @author Team 2412 <first.robototes.com, github.com/robototes>
  */
-public class FlashLights extends Task implements Maps, Hardware {
+public class FlashLights extends Task implements Hardware {
 
 	protected void initialize() {
 		for (int i = 0; i < Constants.flashCount; i++) {

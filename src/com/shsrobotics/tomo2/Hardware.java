@@ -12,20 +12,20 @@ import edu.wpi.first.wpilibj.SpeedController;
 /**
  * Hardware for robot.
  */
-public interface Hardware {
+public interface Hardware extends Maps {
 	public class Wheels {
-		public static SpeedController frontLeft = new Jaguar(Maps.Robot.frontLeftWheel);
-		public static SpeedController rearLeft = new Jaguar(Maps.Robot.rearLeftWheel);
-		public static SpeedController rearRight = new Jaguar(Maps.Robot.rearRightWheel);
-		public static SpeedController frontRight = new Jaguar(Maps.Robot.frontRightWheel);
+		public static SpeedController frontLeft = new Jaguar(Robot.frontLeftWheel);
+		public static SpeedController rearLeft = new Jaguar(Robot.rearLeftWheel);
+		public static SpeedController rearRight = new Jaguar(Robot.rearRightWheel);
+		public static SpeedController frontRight = new Jaguar(Robot.frontRightWheel);
 	} 
 	
 	public class Cannon {
-		public static Compressor compressor = new Compressor(Maps.Robot.pressureSwitch, Maps.Robot.compressorRelay);
-		public static Relay airRelease = new Relay(Maps.Robot.airCannon);
+		public static Compressor compressor = new Compressor(Robot.pressureSwitch, Robot.compressorRelay);
+		public static Relay airRelease = new Relay(Robot.airCannon);
 	}
 	
-	public static BooleanRelay lights = new BooleanRelay(Maps.Robot.lights);
+	public static BooleanRelay lights = new BooleanRelay(Robot.lights);
 	public static RobotDrive drive = new RobotDrive(Wheels.frontLeft, Wheels.rearLeft, Wheels.rearRight, Wheels.frontRight);
 	public static DriverStationLCD screen = DriverStationLCD.getInstance();
 }

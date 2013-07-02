@@ -9,13 +9,12 @@
 package com.shsrobotics.tomo2;
 
 
-import com.shsrobotics.library.GLOBAL;
 import com.shsrobotics.library.Screen;
 import com.sun.squawk.util.MathUtils;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class Main extends IterativeRobot implements Maps, Hardware {
+public class Main extends IterativeRobot implements Hardware {
 
 	public void robotInit() { // flash lights
 		new FlashLights().start();
@@ -41,7 +40,7 @@ public class Main extends IterativeRobot implements Maps, Hardware {
 		double Y = MathUtils.pow(joystick.getY(), 3) * scalingFactor;
 		double Z = MathUtils.pow(joystick.getZ(), 3) * scalingFactor;
 
-		drive.mecanumDrive_Cartesian(X, Y, Z, GLOBAL.noGyroscopeAngle);
+		drive.mecanumDrive_Cartesian(X, Y, Z, noGyroscopeAngle);
 
 		updateDashboardAndScreen();
 	}

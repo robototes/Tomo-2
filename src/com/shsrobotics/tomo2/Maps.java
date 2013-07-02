@@ -10,29 +10,22 @@ import com.shsrobotics.library.joysticks.Extreme3DController;
 /**
  * this interface contains subclasses that hold all of the values and maps for the robot.  everything needs to be a public static and final datatype.
  */
-public interface Maps {
-	//universal constants
-	public static final Relay.Value 
-		ON = Relay.Value.kForward, 
-		OFF = Relay.Value.kOff, 
-		OPEN = Relay.Value.kForward,
-		CLOSED = Relay.Value.kOff;
-
-	public static final Joystick joystick = new Joystick(GLOBAL.USB_1);
+public interface Maps extends GLOBAL {
+	public static final Joystick joystick = new Joystick(USB_1);
 
 	/** Ports on the robot. */
 	public class Robot {
-	    public static final int frontLeftWheel = 3;
-	    public static final int rearLeftWheel = 4;
-	    public static final int frontRightWheel = 1;
-	    public static final int rearRightWheel = 2;
+	    public static final int frontLeftWheel = PWM_3;
+	    public static final int rearLeftWheel = PWM_4;
+	    public static final int frontRightWheel = PWM_1;
+	    public static final int rearRightWheel = PWM_2;
 
-	    public static final int lights = 1;
+	    public static final int lights = RELAY_1;
 
-	    public static final int compressorRelay = 7;
-	    public static final int pressureSwitch = 1;
+	    public static final int compressorRelay = RELAY_7;
+	    public static final int pressureSwitch = DIGITAL_IO_1;
 
-	    public static final int airCannon = 2;
+	    public static final int airCannon = RELAY_2;
 	}
 
 	/** Constants used in code. */

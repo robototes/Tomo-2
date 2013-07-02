@@ -9,14 +9,16 @@
 package com.shsrobotics.tomo2;
 
 
+import com.shsrobotics.library.FRCRobot;
 import com.shsrobotics.library.Screen;
 import com.sun.squawk.util.MathUtils;
-import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class Main extends IterativeRobot implements Hardware {
+public class Main extends FRCRobot implements Hardware {
 
 	public void robotInit() { // flash lights
+		super.robotInit();
+		
 		new FlashLights().start();
 
 		Cannon.compressor.start(); // start storing air

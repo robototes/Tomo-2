@@ -35,13 +35,15 @@ public class Main extends FRCRobot implements Hardware {
 
 		Buttons.driveInSquare.whileHeld(new DriveInSquare());
 		
-		double scalingFactor = Buttons.fineControl.held() ? Constants.driveCoordinateScale : Constants.normalScale; // scale to 1/2 speed while button held
-		//							cubed inputs	and		scale
-		double X = MathUtils.pow(joystick.getX(), 3) * scalingFactor;
-		double Y = MathUtils.pow(joystick.getY(), 3) * scalingFactor;
-		double Z = MathUtils.pow(joystick.getZ(), 3) * scalingFactor;
+		if (!Buttons.driveInSquare.held()) { // not driving in square
+			double scalingFactor = Buttons.fineControl.held() ? Constants.driveCoordinateScale : Constants.normalScale; // scale to 1/2 speed while button held
+			//							cubed inputs	and		scale
+			double X = MathUtils.pow(joystick.getX(), 3) * scalingFactor;
+			double Y = MathUtils.pow(joystick.getY(), 3) * scalingFactor;
+			double Z = MathUtils.pow(joystick.getZ(), 3) * scalingFactor;
 
-		drive.mecanumDrive_Cartesian(X, Y, Z, noGyroscopeAngle);
+			drive.mecanumDrive_Cartesian(X, Y, Z, noGyroscopeAngle);
+		}
 
 		updateDashboardAndScreen();
 	}

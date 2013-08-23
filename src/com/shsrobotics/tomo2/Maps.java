@@ -36,8 +36,6 @@ public interface Maps extends GLOBAL {
 
 	    public static final double driveCoordinateScale = 0.5; // factor to scale drive values
 	    public static final double normalScale = 1.0; // normal scaling
-
-		public static final double powerToTurnInFourSeconds = 0.1; // the power setting so that it takes to fully rotate the robot in exactly four seconds.
 	}
 
 	/** 
@@ -50,6 +48,5 @@ public interface Maps extends GLOBAL {
 	    public static final Button flashLights = new JoystickButton(joystick, Extreme3DController.topTopRight);
 	    public static final Button fineControl = new JoystickButton(joystick, Extreme3DController.side);
 		public static final Button pulseCompressor = new JoystickButton(joystick, Extreme3DController.topBottomRight);
-		public static final Button driveInSquare = new JoystickButton(joystick, Extreme3DController.baseCenterLeft);
 	}
 }

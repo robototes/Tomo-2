@@ -4,7 +4,6 @@ package com.shsrobotics.tomo2;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Jaguar;
 import com.shsrobotics.library.BooleanRelay;
-import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;

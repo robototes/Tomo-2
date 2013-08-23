@@ -15,10 +15,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Main extends FRCRobot implements Hardware {
 
-	public void robotInit() { // flash lights
-		super.robotInit();
+	public void robotInit() {
+		super.robotInit(); // runs basic system check
 		
-		new FlashLights().start();
+		new FlashLights().start(); // flash lights to show readiness (and check lights)
 
 		Cannon.compressor.start(); // start storing air
 
@@ -33,17 +33,13 @@ public class Main extends FRCRobot implements Hardware {
 		lights.set(Buttons.toggleLights.pressed() ? !lights.getState() : lights.getState()); // on button press, toggle lights
 		Buttons.flashLights.whenPressed(new FlashLights());
 
-		Buttons.driveInSquare.whileHeld(new DriveInSquare());
-		
-		if (!Buttons.driveInSquare.held()) { // not driving in square
-			double scalingFactor = Buttons.fineControl.held() ? Constants.driveCoordinateScale : Constants.normalScale; // scale to 1/2 speed while button held
-			//							cubed inputs	and		scale
-			double X = MathUtils.pow(joystick.getX(), 3) * scalingFactor;
-			double Y = MathUtils.pow(joystick.getY(), 3) * scalingFactor;
-			double Z = MathUtils.pow(joystick.getZ(), 3) * scalingFactor;
+		double scalingFactor = Buttons.fineControl.held() ? Constants.driveCoordinateScale : Constants.normalScale; // scale to 1/2 speed while button held
+		//	-	-	-	-	-	-	cubed inputs	and		scale
+		double X = MathUtils.pow(joystick.getX(), 3) * scalingFactor;
+		double Y = MathUtils.pow(joystick.getY(), 3) * scalingFactor;
+		double Z = MathUtils.pow(joystick.getZ(), 3) * scalingFactor;
 
-			drive.mecanumDrive_Cartesian(X, Y, Z, noGyroscopeAngle);
-		}
+		drive.mecanumDrive_Cartesian(X, Y, Z, noGyroscope);
 
 		updateDashboardAndScreen();
 	}

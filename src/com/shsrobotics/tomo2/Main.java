@@ -29,7 +29,8 @@ public class Main extends FRCRobot implements Hardware {
 		Cannon.airRelease.set(Buttons.shootCannon.held() ? OPEN : CLOSED); // if button held, open air release valve, firing cannon
 		Cannon.compressor.setRelayValue(Buttons.pulseCompressor.held() ? ON : OFF); // if button held, force compressor to intake air
 
-		lights.set(Buttons.lightsOn.held() ? ON : OFF); // lights on while button held
+		lights.set(Buttons.leftLightOn.held() ? LEFT_ON : OFF); // lights on while button held
+		lights.set(Buttons.rightLightOn.held() ? RIGHT_ON : OFF); // lights on while button held
 		lights.set(Buttons.toggleLights.pressed() ? !lights.getState() : lights.getState()); // on button press, toggle lights
 		Buttons.flashLights.whenPressed(new FlashLights());
 

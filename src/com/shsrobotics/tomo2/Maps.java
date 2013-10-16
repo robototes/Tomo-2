@@ -13,17 +13,22 @@ import com.shsrobotics.library.joysticks.Extreme3DController;
  */
 public interface Maps extends GLOBAL {
 	public static final Joystick joystick = new Joystick(USB_1);
-
+	public static final Relay.Value LEFT_ON = Relay.Value.kForward;
+	public static final Relay.Value RIGHT_ON = Relay.Value.kReverse;
+	public static final Relay.Value BOTH_ON = Relay.Value.kOn;
+	
+	
+	
 	/** Ports on the robot. */
 	public class Robot {
-	    public static final int frontLeftWheel = PWM_3;
-	    public static final int rearLeftWheel = PWM_4;
-	    public static final int frontRightWheel = PWM_1;
-	    public static final int rearRightWheel = PWM_2;
+	    public static final int frontLeftWheel = PWM_1;
+	    public static final int rearLeftWheel = PWM_2;
+	    public static final int frontRightWheel = PWM_4;
+	    public static final int rearRightWheel = PWM_3;
 
 	    public static final int lights = RELAY_1;
 
-	    public static final int compressorRelay = RELAY_7;
+	    public static final int compressorRelay = RELAY_8;
 	    public static final int pressureSwitch = DIGITAL_IO_1;
 
 	    public static final int airCannon = RELAY_2;
@@ -43,10 +48,11 @@ public interface Maps extends GLOBAL {
 	*/
 	public class Buttons {
 	    public static final Button shootCannon = new JoystickButton(joystick, Extreme3DController.trigger);
-	    public static final Button lightsOn = new JoystickButton(joystick, Extreme3DController.topBottomLeft);
+	    public static final Button leftLightOn = new JoystickButton(joystick, Extreme3DController.topBottomLeft);
+	    public static final Button rightLightOn = new JoystickButton(joystick, Extreme3DController.topBottomRight);
 	    public static final Button toggleLights = new JoystickButton(joystick, Extreme3DController.baseRearRight);
 	    public static final Button flashLights = new JoystickButton(joystick, Extreme3DController.topTopRight);
 	    public static final Button fineControl = new JoystickButton(joystick, Extreme3DController.side);
-		public static final Button pulseCompressor = new JoystickButton(joystick, Extreme3DController.topBottomRight);
+		public static final Button pulseCompressor = new JoystickButton(joystick, Extreme3DController.baseFrontRight);
 	}
 }

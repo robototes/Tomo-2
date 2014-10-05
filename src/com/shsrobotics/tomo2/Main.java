@@ -31,11 +31,14 @@ public class Main extends FRCRobot implements Hardware {
 
 		lights.set(Buttons.leftLightOn.held() ? LEFT_ON : OFF); // lights on while button held
 		lights.set(Buttons.rightLightOn.held() ? RIGHT_ON : OFF); // lights on while button held
-		lights.set(Buttons.toggleLights.pressed() ? !lights.getState() : lights.getState()); // on button press, toggle lights
+                // on button press, toggle lights
+                if (Buttons.toggleLights.pressed()) {
+                    lights.set(lights.get() == ON ? OFF : ON); 
+                }
 		Buttons.flashLights.whenPressed(new FlashLights());
 
 		double scalingFactor = Buttons.fineControl.held() ? Constants.driveCoordinateScale : Constants.normalScale; // scale to 1/2 speed while button held
-		//	-	-	-	-	-	-	cubed inputs	and		scale
+		//	-	-	cubed inputs	and	scale
 		double X = MathUtils.pow(joystick.getX(), 3) * scalingFactor;
 		double Y = MathUtils.pow(joystick.getY(), 3) * scalingFactor;
 		double Z = MathUtils.pow(joystick.getZ(), 3) * scalingFactor;
@@ -52,5 +55,7 @@ public class Main extends FRCRobot implements Hardware {
 		screen.println(Screen.line1, Screen.tab1, airPressureUpdate);
 		SmartDashboard.putBoolean("Fully Charged", charged);
 		SmartDashboard.putString("Status", airPressureUpdate);
+                
+                table.putBoolean(Comm.charged, charged);
 	}
 }

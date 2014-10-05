@@ -17,7 +17,10 @@ public interface Maps extends GLOBAL {
 	public static final Relay.Value RIGHT_ON = Relay.Value.kReverse;
 	public static final Relay.Value BOTH_ON = Relay.Value.kOn;
 	
-	
+        public class Comm {
+            public static final String charged = "charged";
+            public static final String tableName = "DASHBOARD";
+        }
 	
 	/** Ports on the robot. */
 	public class Robot {

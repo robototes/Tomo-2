@@ -1,0 +1,22 @@
+{
+	"name": "Tomo^2 Dashboard",
+	"description": "Robot Control Dashboard, FRC team 2412",
+	"author": "Cory McCartan",
+	"version": "1.0",
+	"app": {
+		"background": {
+			"scripts": ["js/background.js"]
+		}
+	},
+        "permissions": [
+            "system.display"
+        ],
+	"sockets": {
+		"tcp": {
+			"connect": ":1735"
+		},
+		"tcpServer": {
+			"listen": ":1735"
+		}
+	}
+}

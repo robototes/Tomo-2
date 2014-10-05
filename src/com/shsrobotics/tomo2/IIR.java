@@ -22,11 +22,7 @@ public class IIR extends Joystick {
         setSmoothing(new Smoothing(20, 20, 20));
     }
 
-    public IIR(int delay, int joystick) {
-        super(joystick);
-    }
-
-    public IIR(Smoothing smoothing, int joystick) {
+    public IIR(int joystick, Smoothing smoothing) {
         super(joystick);
         setSmoothing(smoothing);
     }

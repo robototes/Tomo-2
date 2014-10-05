@@ -31,9 +31,9 @@ public class Main extends FRCRobot implements Hardware {
          */
         double scalingFactor = Buttons.fineControl.held() ? Constants.driveCoordinateScale : Constants.normalScale; // scale to 1/2 speed while button held
         //	-	-	cubed inputs	and	scale
-        double X = MathUtils.pow(joystick.getX(), 3) * scalingFactor;
-        double Y = MathUtils.pow(joystick.getY(), 3) * scalingFactor;
-        double Z = MathUtils.pow(joystick.getZ(), 3) * scalingFactor;
+        double X = MathUtils.pow(joystick.outputX(), 3) * scalingFactor;
+        double Y = MathUtils.pow(joystick.outputY(), 3) * scalingFactor;
+        double Z = MathUtils.pow(joystick.outputZ(), 3) * scalingFactor;
 
         /*
          * CANNON

@@ -12,7 +12,7 @@ import com.shsrobotics.library.joysticks.Extreme3DController;
  */
 public interface Maps extends GLOBAL {
 
-    public static final IIR joystick = new IIR(USB_1);
+    public static final IIR joystick = new IIR(USB_1, new IIR.Smoothing(30, 30, 20));
     public static final Relay.Value LEFT_ON = Relay.Value.kForward;
     public static final Relay.Value RIGHT_ON = Relay.Value.kReverse;
     public static final Relay.Value BOTH_ON = Relay.Value.kOn;

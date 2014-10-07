@@ -2,8 +2,13 @@ document.onreadystatechange = function() {
     if (document.readyState !== "complete") return;
   
     window.N = new NetworkTable("DASHBOARD", "10.24.12.2");
-    
-    N.setCallback(update);
+    N.connect();
+    var id = setInterval(function() {
+       if (N.isConnected())  {
+           N.setCallback(update);
+           clearInterval(id)
+       }
+    });
 };
 
 function update() {

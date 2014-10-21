@@ -30,17 +30,17 @@ public interface Maps extends GLOBAL {
      */
     public class Robot {
 
-        public static final int frontLeftWheel = PWM_1;
-        public static final int rearLeftWheel = PWM_2;
-        public static final int frontRightWheel = PWM_4;
-        public static final int rearRightWheel = PWM_3;
+        public static final int frontLeftWheel = PWM_7;
+        public static final int rearLeftWheel = PWM_6;
+        public static final int frontRightWheel = PWM_9;
+        public static final int rearRightWheel = PWM_8;
 
-        public static final int lights = RELAY_1;
+        public static final int lights = RELAY_2;
 
         public static final int compressorRelay = RELAY_8;
         public static final int pressureSwitch = DIGITAL_IO_1;
 
-        public static final int airCannon = RELAY_2;
+        public static final int airCannon = RELAY_1;
     }
 
     /**
@@ -48,12 +48,12 @@ public interface Maps extends GLOBAL {
      */
     public class Constants {
 
-        public static final int flashRate = 4; // how often to flash (on -> off -> on) lights per second
+        public static final int flashRate = 2; // how often to flash (on -> off -> on) lights per second
         public static final int flashCount = 4; // how many times to flash lights
 
         public static final double driveCoordinateScale = 0.5; // factor to scale drive values
         public static final double normalScale = 1.0; // normal scaling
-        
+
         public static final double recoilInitial = -0.5; // initial recoil velocity
         public static final double recoilDecay = 0.25; // rate to decrease recoil (velocity/s)
     }

@@ -5,9 +5,7 @@
  *	
  *	PROJECT LICENSE IN ROOT FOLDER.
  */
-
 package com.shsrobotics.tomo2;
-
 
 import com.shsrobotics.library.FRCRobot;
 import com.sun.squawk.util.MathUtils;
@@ -18,11 +16,7 @@ public class Main extends FRCRobot implements Hardware {
     public void robotInit() {
         super.robotInit(); // runs basic system check
 
-        new FlashLights().start(); // flash lights to show readiness (and check lights)
-
         Cannon.compressor.start(); // start storing air
-
-        SmartDashboard.putString("Status", "Ready to go!");
     }
 
     public void teleopPeriodic() {
@@ -49,7 +43,9 @@ public class Main extends FRCRobot implements Hardware {
             Cannon.airRelease.set(OPEN); // fire
             Y -= (Constants.recoilInitial - Constants.recoilDecay * timer.get() / 1e6); // recoil
 
-        } else Cannon.airRelease.set(CLOSED);
+        } else {
+            Cannon.airRelease.set(CLOSED);
+        }
 
         /*
          * LIGHTS
@@ -58,7 +54,7 @@ public class Main extends FRCRobot implements Hardware {
         lights.set(Buttons.rightLightOn.held() ? RIGHT_ON : OFF); // lights on while button held
         // on button press, toggle lights
         if (Buttons.toggleLights.pressed()) {
-            lights.set(lights.get() == ON ? OFF : ON); 
+            lights.set(lights.get() == ON ? OFF : ON);
         }
         Buttons.flashLights.whenPressed(new FlashLights());
 
@@ -66,7 +62,7 @@ public class Main extends FRCRobot implements Hardware {
          * EXECUTE DRIVE
          */
         drive.mecanumDrive_Cartesian(X, Y, Z, noGyroscope);
-        
+
         /*
          * UPDATE DRIVER DISPLAY
          */

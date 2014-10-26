@@ -22,6 +22,13 @@ public interface Maps extends GLOBAL {
     public class Comm {
 
         public static final String charged = "charged";
+        public static final String recoil = "recoil";
+        public static final String driveType = "drivetype";
+        public static final String robotX = "robotX";
+        public static final String robotY = "robotY";
+        public static final String targetX = "targetX";
+        public static final String targetY = "targetY";
+        
         public static final String tableName = "DASHBOARD";
     }
 
@@ -54,8 +61,15 @@ public interface Maps extends GLOBAL {
         public static final double driveCoordinateScale = 0.5; // factor to scale drive values
         public static final double normalScale = 1.0; // normal scaling
 
-        public static final double recoilInitial = -0.5; // initial recoil velocity
+        public static final double recoilInitial = -0.75; // initial recoil velocity
         public static final double recoilDecay = 0.25; // rate to decrease recoil (velocity/s)
+        
+        public static final double getPressure(double time) {
+            double pressureAfterShot = 30; // pressure in PSI after one shot
+            double timeToRecharge = 35; // seconds to recharge   
+            
+            return (120 - pressureAfterShot) * time / timeToRecharge + pressureAfterShot;
+        }
     }
 
     /**
